@@ -1,0 +1,270 @@
+    <!DOCTYPE html>  
+    <html lang="en" style="background-color: lightskyblue">  
+    <head>
+    <title>Registration</title>  
+    <meta  name = "viewport" content="width=device-width, initial-scale=1; charset=UTF-8">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">     
+    </head> 
+    <nav  class="navbar navbar-inverse">
+        <div class="container-fluid">
+        <div class="navbar-header" >
+            <a  class="navbar-brand" href="#">XIMPLE REGISTRATION FORM</a>
+        </div>
+        </div>
+    </nav>
+         
+    <script >
+        function display() { 
+            var select = document.getElementById('arr').options.length;
+            city=[];
+            var select = document.getElementById("arr");
+            let values = document.forms["forms"]["state"].value;
+            if(values== "gujarat"){
+                city = ["Ahmedabad", "Surat", "Gandhinagar", "Valsad", "Rajkot"];
+            }
+            else if(values== "rajasthan"){
+                city = ["Jaipur", "Ajmer", "Jaisalmer", "Mount Abu", "Bikaner"];
+            }
+            else if(values== "maharashtra"){
+                city = ["Mumbai", "Pune", "Thane", "Nagpur", "Nashik"];
+            }
+            select.length = 1;
+            for (var i = 0; i < city.length; i++) {
+                if(i == 0){
+                    var ele = document.createElement("option");
+                }
+                var optn = city[i];
+                var el = document.createElement("option");
+                el.textContent = optn;
+                el.value = optn;
+                select.appendChild(el);
+            }
+        }
+    function validate(){ 
+        alert("Form Submission in process");
+        let firstname = document.forms["forms"]["firstName"].value;
+        let lastname = document.forms["forms"]["lastName"].value;
+        let middlename = document.forms["forms"]["middleName"].value;
+        let contactt = document.forms["forms"]["contactno"].value;
+        let xaddress1 = document.forms["forms"]["address1"].value;
+        let xaddress2 = document.forms["forms"]["address2"].value;
+        let xzipcode = document.forms["forms"]["zipcode"].value;
+        let xemail = document.forms["forms"]["emails"].value;
+        let x = true;
+        let y = true;
+        var checkboxx = document.getElementsByName("language");
+        var radios = document.getElementsByName('Krish');
+        var xtype = document.getElementById("Addresstype");
+        var xcountry = document.getElementById("Country");
+        var xstate = document.getElementById("State");
+        var xcity = document.getElementById("arr")
+        for (var radio of radios){
+            if (radio.checked) {
+                x = false;
+            }
+        }
+        if (isNaN(contactt) == true ){
+            alert("Contact should be a number")
+            return false;
+        }
+        if (firstname == ""){
+            alert("First Name is Required");
+            return false;
+        }
+        if (lastname == ""){
+            alert("Last Name is Required");
+            return false;
+        }
+        if (middlename == ""){
+            alert("Middle Name is Required");
+            return false;
+        }
+        if (contactt== ""){
+            alert("Contact is Required");
+            return false;
+        }
+        if(xtype.value == "empty"){
+            alert("Address Type is Required");
+            return false;
+        }
+        if(xcountry.value == "empty"){
+            alert("Country is Required");
+            return false;
+        }
+        if(xstate.value == "empty"){
+            alert("State is Required");
+            return false;
+        }
+        if(xcity.value == "empty"){
+            alert("City is Required");
+            return false;
+        }
+        if (xaddress1== ""){
+            alert("Address 1 is Required");
+            return false;
+        }
+        if (xzipcode== ""){
+            alert("Zipcode is Required");
+            return false;
+        }
+        if (xemail== ""){
+            alert("Email is Required");
+            return false;
+        }
+        if (firstname.length > 60){
+            alert("First Name should be between 0-60 characters");
+            return false;
+        }
+        if (middlename.length >60){
+            alert("Middle Name should be no more than 60 characters");
+            return false;
+        }
+        if (lastname.length >60){
+            alert("Last Name should be no more than 60 characters");
+            return false;
+        }
+        if (contactt.length != 10 ){
+            alert("Contact should be exactly 10 characters")
+            return false;
+        }
+        
+        if (xaddress1.length > 60){
+            alert("Address 1 is too long");
+            return false;
+        }
+        if (xaddress2.length > 60){
+            alert("Address 2 is too long");
+            return false;
+        }
+        if (xzipcode.length >6 ){
+            alert("Zipcode should be no more than 6 characters");
+            return false;
+        }    
+        if (xemail.length > 60){
+            alert("Address 2 is too long");
+            return false;
+        }
+        if(x==true){
+                alert("Please Select Gender");
+                return false;
+        }
+        if(this.forms.language.checked == false){
+            alert('Enter Language');
+            return false;
+        }
+        else {
+        alert("Your Request has been submitted")
+        return true;
+        }
+    }
+
+    </script>
+   <div  style=" padding-left: 300px; background-color: lightskyblue ">
+        <form  id = 'forms' style="text-align: left; max-width: 70%;">
+            <div class = "form-group">
+            <h1 style="text-align: center;">Customer Details</h1>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for ="FirstName" > First Name: *   </label>
+                <input  class="form-control" id = "FirstName" name = "firstName" placeholder="Enter First Name"  maxlength="60">
+            </div>
+            <div class = "form-group col-md-4">
+                <label for ="LastName"> Last Name: *</label>
+                <input class="form-control" id = "LastName" name="lastName"  placeholder="Enter Last Name"  maxlength="60">
+            </div>
+            <div class = "form-group col-md-4">
+                <label for ="MiddleName"> Middle Name: *</label>
+                <input class="form-control" id = "MiddleName" name="middleName"  placeholder="Enter Middle Name" maxlength="60" >
+            </div>
+            </div>
+            <div class = "form-row">
+            <div class = "form-group col-md-6">
+                <label for ="contactNo"> Contact Number: *</label>
+                <input  class="form-control"id = "contactNo" type = "number" name="contactno"  placeholder="Enter Contact No.">
+            </div>
+            <div class = "form-group col-md-6">
+                <label for ="Addresstype"> Address Type: *</label>
+                <select class = "form-control" id = "Addresstype" name="addresstype">
+                    <option value = "empty" label = " "></option>
+                    <option value="home">Home</option>
+                    <option value="work">Work</option>
+                  </select>
+            </div>
+            </div>
+            <div class = "form-row">
+            <div class = "form-group col-md-4">
+                <label for ="Country"> Country: *</label>
+                <select class="form-control" id = "Country"name="country" >
+                    <option value="empty">----------Select Country----------</option>
+                    <option value="India">India</option>
+                  </select>
+            </div>
+            <div class = "form-group col-md-4">
+
+                <label for ="State"> State: *</label>
+                <select class="form-control" id ="State"  name="state" onchange="display()" >
+                    <option  value="empty">---------Select State---------</option>
+                    <option  value="gujarat">Gujarat</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option  value="rajasthan">Rajasthan</option>
+               </select>
+            </div>
+            <div class = "form-group col-md-4">
+                <label for = "arr"> City: *</label>
+                <select class="form-control"   id="arr"><option value = "empty" >---------Select City--------</option></select>
+            </div>
+        </div>
+        <div class = "form-row">
+            <div class = "form-group col-md-5">
+                <label for ="Address1"> Address line 1: *  </label>
+                <input class="form-control"  id = "Address1" name="address1"  placeholder="Enter house/apartment" maxlength="60">
+            </div>
+            <div class = "form-group col-md-4">
+                <label for ="Address2"> Address line 2:   </label>
+                <input class="form-control"  id = "Address2" name="address2" placeholder="Enter Address line 2"  maxlength="60">
+            </div>
+            <div class = "form-group col-md-3">
+                <label for ="Zipcode">Zipcode: *</label>
+                <input class="form-control" id = "Zipcode" type = "number" name="zipcode" placeholder="Enter Zipcode"  >
+            </div>
+        </div>
+        <div class = "form-row">
+            <div class = "form-group col-md-7">
+                <label for ="emails"> Email address: *  </label>
+                <input class="form-control" id="emails" placeholder="Enter email" maxlength="60" type="email">
+            </div>
+            <div class=" form-group col-md-5">
+                <div class="custom-control custom-radio">
+                    <label>Gender: *</label>
+                    <input type="radio" class="custom-control-input" id="Male" name="Krish" value="Male" >
+                    <label class="custom-control-label" for="Male">Male</label>
+                    <input type="radio" class="custom-control-input" id="Female" name="Krish" value="Female">
+                    <label class="custom-control-label" for="Female">Female</label>
+                    <input type="radio" class="custom-control-input" id="Trans" name="Krish" value="Trans">
+                    <label class="custom-control-label" for="Trans">Trans</label>
+                </div>
+            </div>
+        </div>
+        <div class=" form-group col-md-5">
+                <div>
+                    <label>Language: *</label>
+                    <input type="checkbox" class="form-check-input" id="English" name="language" value="English" >
+                    <label class="custom-control-label" for="English">English</label>
+                    <input type="checkbox" class="form-check-input" id="Hindi" name="language" value="Hindi">
+                    <label class="custom-control-label" for="Hindi">Hindi</label>
+                    <input type="checkbox" class="form-check-input" id="Gujarati" name="language" value="Gujarati">
+                    <label class="custom-control-label" for="Gujarati">Gujarati</label>
+                </div>
+            </div>
+            <div class=" form-row">
+            <div class = "form-group col-md-12"></div>
+            <h6 style="size: 1px; color: red; text-align: center;">* for required fields</h6>
+        </div>
+            <div style="text-align: center;"class = "form-group">
+                <button  id = "SUBmitttt" onclick= "validate()"> Submit</button>
+            </div>
+            <p> .</p>
+        </div>
+        </form>
+    </div> 
